@@ -8,3 +8,10 @@ uvicorn[standard]
 sqlalchemy
 alembic
 asyncpg
+
+# For validation
+pydantic[email]
+
+# For Security
+PyJWT
+passlib

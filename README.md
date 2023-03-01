@@ -12,7 +12,7 @@
 - Docker
 
 ### Obejetivos
-- [ x ] Docker compose para rodar um banco de dados em produção e outro de testes
+- [x] Docker compose para rodar um banco de dados em produção e outro de testes
 - [ ] Testar Conexão construindo a tabela de usuários
 - [ ] Construir Models e Schemas
 

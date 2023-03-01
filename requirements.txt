@@ -1,0 +1,8 @@
+# For API
+fastapi
+
+#ASGI server
+uvicorn[standard]
+
+# For Data Base
+sqlalchemy

@@ -19,7 +19,7 @@ See https://pydantic-docs.helpmanual.io/usage/settings/
 """
 
 from pathlib import Path
-from pydantic import BaseSettings, PostgresDsn, validator
+from pydantic import BaseSettings,EmailStr, PostgresDsn, validator
 from typing import Literal
 
 PROJECT_DIR = Path(__file__).parent.parent.parent
@@ -27,7 +27,11 @@ PROJECT_DIR = Path(__file__).parent.parent.parent
 
 class Settings(BaseSettings):
     # CORE SETTINGS
+    SECRET_KEY: str
     ENVIRONMENT: Literal["DEV", "PYTEST", "STG", "PRD"] = "DEV"
+    SECURITY_BCRYPT_ROUNDS: int = 12
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 11520  # 8 days
+    REFRESH_TOKEN_EXPIRE_MINUTES: int = 40320  # 28 days
     
     # PROJECT NAME, VERSION AND DESCRIPTION
     PROJECT_NAME: str 
@@ -49,6 +53,10 @@ class Settings(BaseSettings):
     TEST_DATABASE_PORT: str = "5432"
     TEST_DATABASE_DB: str = "postgres"
     TEST_SQLALCHEMY_DATABASE_URI: str = ""
+    
+    # FIRST SUPERUSER
+    FIRST_SUPERUSER_EMAIL: EmailStr
+    FIRST_SUPERUSER_PASSWORD: str
     
     @validator("DEFAULT_SQLALCHEMY_DATABASE_URI")
     def _assemble_default_db_connection(cls, v: str, values: dict[str, str]) -> str:

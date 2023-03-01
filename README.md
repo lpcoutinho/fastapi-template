@@ -5,18 +5,6 @@
 
 >O objetivo é desenvolver um template básico para se construir APIs. Nele haverá uma tabela de usuários com senhas criptografadas, além de autenticação por token, recuperação de login, etc.
 
-## Tecnologias utilizadas
-- FastAPI
-- Uvicorn
-- PostgreSQL
-- Docker
-
-### Obejetivos
-- [x] Docker compose para rodar um banco de dados em produção e outro de testes
-- [ ] Testar Conexão construindo a tabela de usuários
-- [ ] Construir Models e Schemas
-
-
 ### 💻 Pré-requisitos
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
@@ -28,14 +16,7 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
 ## 🚀 Instalando o Projeto
 
-### 1. Rode os bancos de dados
-
-```bash
-### Setup two databases
-docker-compose up -d
-```
-
-### 2. Inicie um ambiente virtual
+### 1. Inicie um ambiente virtual
 
 Linux e macOS:
 ```bash
@@ -54,7 +35,22 @@ Windows:
 pip install -r requirements.txt
 ```
 
-### 3. ☕ Rodando em ambiente local
+### 2. Monte os bancos de dados
+Montaremos duas bases de dados com docker compose. Uma para testes e outra para deenvolvimento.
+
+```bash
+# Rode os containers em egundo plano
+docker-compose up -d
+```
+
+Realize as migrações com Alembic para contruir as tabelas
+
+```bash
+alembic upgrade head
+```
+
+
+### x. ☕ Rodando em ambiente local
 
 ```bash
 uvicorn main:app --reload

@@ -19,7 +19,7 @@ See https://pydantic-docs.helpmanual.io/usage/settings/
 """
 
 from pathlib import Path
-from pydantic import BaseSettings,EmailStr, PostgresDsn, validator
+from pydantic import AnyHttpUrl,BaseSettings,EmailStr, PostgresDsn, validator
 from typing import Literal
 
 PROJECT_DIR = Path(__file__).parent.parent.parent
@@ -32,7 +32,9 @@ class Settings(BaseSettings):
     SECURITY_BCRYPT_ROUNDS: int = 12
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 11520  # 8 days
     REFRESH_TOKEN_EXPIRE_MINUTES: int = 40320  # 28 days
-    
+    BACKEND_CORS_ORIGINS: list[AnyHttpUrl] = []
+    ALLOWED_HOSTS: list[str] = ["localhost", "127.0.0.1"]
+
     # PROJECT NAME, VERSION AND DESCRIPTION
     PROJECT_NAME: str 
     VERSION: str 

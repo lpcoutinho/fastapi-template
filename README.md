@@ -49,6 +49,10 @@ Realize as migrações com Alembic para contruir as tabelas
 alembic upgrade head
 ```
 
+Crie o primeiro usuário e verifique se tudo está ok no banco de dados
+```bash
+python -m app.initial_data
+```
 
 ### x. ☕ Rodando em ambiente local
 
